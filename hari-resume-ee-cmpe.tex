@@ -1,0 +1,202 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------
+\begin{document}
+ 
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Harinandan Kotamsetti} \\ \vspace{1pt}
+    \small Cupertino, CA $|$ +1 (669) 264-9458 $|$ \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/hareee234/}{\underline{linkedin.com/in/hareee234}} $|$
+    \href{https://github.com/AwesomenessReborn}{\underline{github.com/AwesomenessReborn}}
+\end{center}
+ 
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{San Jose State University}}{San Jose, CA}
+      {Bachelor of Science in Computer Engineering}{Expected Dec 2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Coursework:} OS, Computer Architecture, C/C++, FPGA, Verilog, Linear Algebra, x86 \& MIPS Assembly}
+        
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+ 
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+ 
+    \resumeSubheading
+      {\textbf{STMicroelectronics}}{Santa Clara, CA}
+      {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
+      \resumeItemListStart
+      
+        \resumeItem{\textbf{Implemented a C++ JNI inference bridge} for a \textbf{129 KB, 103K-parameter CNN-LSTM} targeting Qualcomm Snapdragon NPU via \textbf{QNN/QAIRT C APIs}, connecting native model execution and preprocessing to a Kotlin/Compose Android app; \textbf{0.059 m/s MAE} on IMU walking-speed estimation.}
+        
+        \resumeItem{\textbf{Ported IMU preprocessing from Python to native C++} over \textbf{512-sample windows at 208 Hz}, using Butterworth filtering, RobustScaler normalization, and ring-buffer windowing, validated through C/Python regression tests.}
+        
+        \resumeItem{\textbf{Built a C/Python regression harness} that automatically validates exported-model outputs against Python references, enforcing numerical correctness across \textbf{TFLite, ONNX, and QNN} deployment targets.}
+        
+        \resumeItem{\textbf{Deployed always-on sensor intelligence} at \textbf{50 Hz entirely in-sensor} using ISPU/MLC with zero host-MCU compute for fall detection and personalized wrist-tilt recognition on SensorTile.box.}
+                
+      \resumeItemListEnd
+ 
+    \resumeSubheading
+      {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
+      {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
+      \resumeItemListStart
+        \resumeItem{\textbf{Improved STM32F105 BMS round-robin polling latency} from 7 s to 0.5 s for a 400 V, 12S8P x 8 module Formula SAE battery by removing blocking CAN/thermistor delays, refactoring module reads, and replacing dynamic buffers with static lifetime buffers.}
+        
+        \resumeItem{\textbf{Implemented interrupt-driven BMS fault handling} using \textbf{TIM7/NVIC} \textbf{ISR} logic and 8-bit fault/ 
+        warning state bytes for HV safety shutdown signaling across an 8-module accumulator architecture.}
+        
+        \resumeItem{\textbf{Improved CAN telemetry reliability} by replacing blocking 10 ms transmit delays with STM32 3-mailbox availability checks and 0.5 s reconnect retry logic for reliable 1 Hz BMS data transmission.}
+        
+        \resumeItem{\textbf{Refactored LTC6811 BMS firmware} \textbf{for LTC6813 migration}, updating ADC register handling, static buffer sizing, and CAN data for 16-bit cell voltage/temperature telemetry across the \textbf{768-cell pack} architecture.}
+        
+      \resumeItemListEnd
+ 
+  \resumeSubHeadingListEnd
+ 
+%-----------PATENT APPLICATIONS-----------
+\section{Patent Applications}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Glasses with Wellness and Health Monitoring} - STMicroelectronics, Co-inventor}{Filed May 2026}
+      \resumeItemListStart
+        \resumeItem{Developed embedded ML and sensor-intelligence components for privacy-conscious wearable monitoring.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+ 
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+ 
+      \resumeProjectHeading
+          {\textbf{MIPS SoC with Hardware Accelerator} $|$ \emph{Verilog, Xilinx Vivado, Basys 3 FPGA}}{2024}
+          \resumeItemListStart
+            \resumeItem{Designed and deployed \textbf{32-bit MIPS SoC} on Artix-7 FPGA with custom single-cycle CPU, memory-mapped GPIO, and hardware factorial accelerator using Moore FSM with datapath/control separation.}
+            
+          \resumeItemListEnd
+ 
+      \resumeProjectHeading
+          {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$ \emph{Python, pymavlink, YOLOv8, CUDA, Jetson}}{2026}
+          \resumeItemListStart
+            \resumeItem{Developed \textbf{MAVLink flight controller integration} on NVIDIA Jetson Orin Nano over soldered UART to Pixhawk in GUIDED mode, with a concurrent GPS telemetry daemon and YOLOv8n CUDA inference pipeline for geotagged detection; flight control validated on hardware, vision pipeline ground-tested.}
+            
+          \resumeItemListEnd 
+ 
+    \resumeSubHeadingListEnd
+ 
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C, C++, Python, Verilog, Java, Kotlin, x86/MIPS Assembly} \\
+     \textbf{Embedded \& Protocols}{: STM32 (Cortex-M3), Device Drivers (SPI, isoSPI, I2C, CAN, BLE), MEMS IMUs, Real-Time Systems, DSP, Signal Processing} \\
+     \textbf{Testing \& Validation}{: HIL Testing, JNI Harness, Regression Testing, Software Simulation, Performance Benchmarking} \\
+     \textbf{EDA \& Simulation}{: Altium, LTspice, MATLAB, Simulink, Xilinx Vivado} \\
+     \textbf{Development Tools}{: Git, JTAG Debuggers, Oscilloscopes, CMake, Make, STM32CubeIDE} \\
+     \textbf{ML/AI \& Data}{: TensorFlow, TFLite, PyTorch, ONNX, SciPy, InfluxDB, Grafana, Docker}
+    }}
+ \end{itemize}
+ 
+%-------------------------------------------
+\end{document}

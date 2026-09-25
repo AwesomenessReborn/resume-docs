@@ -1,0 +1,187 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+
+\addtolength{\topmargin}{-0.88in}
+\addtolength{\textheight}{1.9in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=-1pt,topsep=2pt]}
+
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Harinandan Kotamsetti} \\ \vspace{1pt}
+    \small Cupertino, CA $|$ +1 (669) 264-9458 $|$
+    \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/hareee234/}{\underline{linkedin.com/in/hareee234}} $|$
+    \href{https://github.com/AwesomenessReborn}{\underline{github.com/AwesomenessReborn}}
+\end{center}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{San Jose State University}}{San Jose, CA}
+      {Bachelor of Science in Computer Engineering}{Expected Dec 2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Coursework:} OS, Computer Architecture, C/C++, FPGA, Verilog, Linear Algebra, x86 \& MIPS Assembly}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+        \textbf{Languages}{: C/C++, Embedded C Programming,  Python, Kotlin, Java, SQL} \\
+        \textbf{ML \& AI}{: PyTorch, Tensorflow, TFLite, ONNX, QNN/QAIRT, CUDA, LoRA fine-tuning, llama.cpp, scikit-learn, NumPy, Pandas, SciPy.} \\
+        \textbf{Signal Processing \& Analysis}{: MATLAB (familiar), Simulations, analytical modeling, feasibility studies, Digital filtering (Butterworth), feature extraction (FFT, windowing), time-series analysis, sensor fusion.} \\
+        \textbf{Developer Tools}{: Android (NDK/JNI, Gradle, adb/logcat), CMake, Docker, GitHub Actions, CI/CD, Claude Code, OpenCode (agentic coding workflows, code review augmentation).} \\
+        \textbf{Data \& Infrastructure}{: PostgreSQL, InfluxDB, Grafana, AWS S3.} \\
+        \textbf{Concepts}{: On-device ML inference, model deployment, real-time data pipelines, model evaluation, debugging.}
+            }}
+ \end{itemize}
+
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{STMicroelectronics}}{Santa Clara, CA}
+      {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
+      \resumeItemListStart
+        
+        \resumeItem{\textbf{Designed a 129 KB, 103K-parameter CNN-LSTM achieving 0.059 m/s MAE} for
+        walking-speed estimation on \textbf{Qualcomm Snapdragon 8 Elite Gen 5 NPU}; built and debugged
+        the full QNN/QAIRT C-API inference path and C++ JNI bridge into a production Kotlin/Compose
+        Android app, with native C++ preprocessing for raw IMU streams at \textbf{208 Hz}.
+        \textbf{Demoed @ CES 2026.}}
+        
+        \resumeItem{\textbf{Ported a VR head-motion prediction model (887K params) from PyTorch to a
+        Qualcomm Hexagon NPU} (ONNX $\rightarrow$ QAIRT, HTP v81 / HDK 8850), matching the PyTorch
+        reference to \textbf{0.056$^\circ$} on device; established the deployment target by hardware
+        inspection where the inherited codebase specified none.}
+        
+        \resumeItem{\textbf{Cut that model's prediction error 41\% near-term and 9\% at the 111 ms
+        target horizon} by implementing and validating a log-map angular loss, after tracing training
+        stalls to an objective whose gradient vanished near convergence.}
+        
+        \resumeItem{\textbf{Rebuilt training diagnostics} after proving the incumbent metrics could not
+        detect progress (horizon-average correlated 0.996 with the target); per-horizon record tracking
+        against a measured noise band exposed \textbf{79\% of evaluations retaining no recoverable
+        weights}.}
+        
+        \resumeItem{\textbf{Built an integration test framework} (C/Python regression harness)
+        validating exported-model outputs across \textbf{TFLite, ONNX, and QNN}, enforcing correctness
+        across model updates.}
+        
+        \resumeItem{\textbf{Deployed always-on sensor intelligence at 50 Hz} in-sensor (ISPU/MLC, zero
+        host-MCU compute) on SensorTile.box for fall detection, airplane mode and personalized
+        wrist-tilt recognition, preserving battery life.}
+
+      \resumeItemListEnd
+    \resumeSubheading
+      {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
+      {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
+      \resumeItemListStart
+        
+        \resumeItem{\textbf{Improved real-time BMS observability} by building a \textbf{CAN - InfluxDB - Grafana} telemetry pipeline for live diagnostics, fault visibility, and team-wide debugging across a \textbf{400 V Formula SAE} battery system.}
+                
+        \resumeItem{\textbf{Optimized STM32 BMS data reliability} by removing blocking CAN delays, adding mailbox-aware transmit logic, and supporting 1 Hz battery telemetry for downstream monitoring and analysis.}
+        
+        \resumeItem{\textbf{Architected the STM32 BMS firmware using observer and factory patterns} (C function-pointer dispatch) for sensor polling and CAN module instantiation, achieving \textbf{3\% SoC estimation error (MAE)}.}
+      
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Patent Applications}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Glasses with Wellness and Health Monitoring} - STMicroelectronics, Co-inventor}{Filed May 2026}
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{Nemotron-H Fine-Tuning --- Kaggle NLP Competition} $|$
+          \emph{Python, PyTorch, LoRA, llama.cpp}}{2026}
+        \resumeItemListStart
+            \resumeItem{\textbf{Improved controlled task accuracy by +19.6–22.5 absolute percentage points} by building a LoRA fine-tuning and evaluation pipeline for Nemotron-H 4B (Hybrid Mamba-Attention), \textbf{training 20.2M / 3.99B parameters (0.5\%) on 8,000+ self-generated reasoning traces} with assistant-only label masking.}
+            \resumeItem{\textbf{Diagnosed FP32/BF16 Mamba kernel divergence}, restricted LoRA to attention/MLP targets, and wrote a training loop with no-cache chunked inference after the stock Trainer/generate() diverged on cached SSM state.}
+        \resumeItemListEnd
+    \resumeProjectHeading
+        {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$
+          \emph{Python, YOLOv8n, CUDA, Jetson Orin, MAVLink}}{2026}
+        \resumeItemListStart
+            \resumeItem{\textbf{Owned the onboard embedded layer on NVIDIA Jetson Orin Nano}, integrating Pixhawk MAVLink flight control, GPS telemetry, and a YOLOv8n inference/upload loop into a single mission runtime.}
+            \resumeItem{\textbf{Implemented and flight-tested the MAVLink control path} for takeoff, altitude, XY, and rotation over 921600-baud UART with 4 Hz telemetry polling; gated geotagged YOLOv8n detections on GPS readiness.}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\end{document}
