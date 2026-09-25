@@ -11,21 +11,38 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{textgreek}
 \usepackage{tabularx}
 \input{glyphtounicode}
 
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} % clear all header and footer fields
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 
-\addtolength{\topmargin}{-0.88in}
-\addtolength{\textheight}{1.9in}
+\addtolength{\topmargin}{-.9in}    % was -.5in
+\addtolength{\textheight}{1.7in}   % was 1.0in
+
+% \addtolength{\topmargin}{-.5in}
+% \addtolength{\textheight}{1.0in}
 
 \urlstyle{same}
 
@@ -33,12 +50,16 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+% Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
+% Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
+%-------------------------
+% Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1 \vspace{-2pt}}
@@ -73,115 +94,132 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-
-\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=-1pt,topsep=2pt]}
-
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=-1pt, topsep=3pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{document}
 
-\begin{center}
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+    \begin{center}
     \textbf{\Huge \scshape Harinandan Kotamsetti} \\ \vspace{1pt}
-    \small Cupertino, CA $|$ +1 (669) 264-9458 $|$
-    \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$
+    \small Cupertino, CA $|$ +1 (669) 264-9458 $|$ \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$ 
     \href{https://www.linkedin.com/in/hareee234/}{\underline{linkedin.com/in/hareee234}} $|$
-    \href{https://github.com/AwesomenessReborn}{\underline{github.com/AwesomenessReborn}}
+    \href{https://github.com/AwesomenessReborn}{\underline{github.com/AwesomenessReborn}}    
 \end{center}
 
+%==================== SWE RESUME (systems / backend-leaning) ====================
+% Drop-in BODY (sections only). Assumes your preamble with \resumeSubheading,
+% \resumeItem, \resumeProjectHeading, \resumeSubHeadingListStart, etc. + contact header.
+
+%-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
       {\textbf{San Jose State University}}{San Jose, CA}
       {Bachelor of Science in Computer Engineering}{Expected Dec 2026}
       \resumeItemListStart
-        \resumeItem{\textbf{Coursework:} OS, Computer Architecture, C/C++, FPGA, Verilog, Linear Algebra, x86 \& MIPS Assembly}
+        \resumeItem{\textbf{Coursework:} Operating Systems, Computer Architecture, C/C++, Data Structures \& Algorithms, x86 \& MIPS}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-        \textbf{Languages}{: C/C++, Embedded C Programming,  Python, Kotlin, Java, SQL} \\
-        \textbf{ML \& AI}{: PyTorch, Tensorflow, TFLite, ONNX, QNN/QAIRT, CUDA, LoRA fine-tuning, llama.cpp, scikit-learn, NumPy, Pandas, SciPy.} \\
-        \textbf{Signal Processing \& Analysis}{: MATLAB (familiar), Simulations, analytical modeling, feasibility studies, Digital filtering (Butterworth), feature extraction (FFT, windowing), time-series analysis, sensor fusion.} \\
-        \textbf{Developer Tools}{: Android (NDK/JNI, Gradle, adb/logcat), CMake, Docker, GitHub Actions, CI/CD, Claude Code, OpenCode (agentic coding workflows, code review augmentation).} \\
-        \textbf{Data \& Infrastructure}{: PostgreSQL, InfluxDB, Grafana, AWS S3.} \\
-        \textbf{Concepts}{: On-device ML inference, model deployment, real-time data pipelines, model evaluation, debugging.}
-            }}
- \end{itemize}
-
+%-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
+
     \resumeSubheading
       {\textbf{STMicroelectronics}}{Santa Clara, CA}
       {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
       \resumeItemListStart
-        
-        \resumeItem{\textbf{Designed a 129 KB, 103K-parameter CNN-LSTM achieving 0.059 m/s MAE} for
-        walking-speed estimation on \textbf{Qualcomm Snapdragon 8 Elite Gen 5 NPU}; built and debugged
-        the full QNN/QAIRT C-API inference path and C++ JNI bridge into a production Kotlin/Compose
-        Android app, with native C++ preprocessing for raw IMU streams at \textbf{208 Hz}.
-        \textbf{Demoed @ CES 2026.}}
-        
-        \resumeItem{\textbf{Ported a VR head-motion prediction model (887K params) from PyTorch to a
-        Qualcomm Hexagon NPU} (ONNX $\rightarrow$ QAIRT, HTP v81 / HDK 8850), matching the PyTorch
-        reference to \textbf{0.056$^\circ$} on device; established the deployment target by hardware
-        inspection where the inherited codebase specified none.}
-        
-        \resumeItem{\textbf{Cut that model's prediction error 41\% near-term and 9\% at the 111 ms
-        target horizon} by implementing and validating a log-map angular loss, after tracing training
-        stalls to an objective whose gradient vanished near convergence.}
-        
-        \resumeItem{\textbf{Rebuilt training diagnostics} after proving the incumbent metrics could not
-        detect progress (horizon-average correlated 0.996 with the target); per-horizon record tracking
-        against a measured noise band exposed \textbf{79\% of evaluations retaining no recoverable
-        weights}.}
-        
-        \resumeItem{\textbf{Built an integration test framework} (C/Python regression harness)
-        validating exported-model outputs across \textbf{TFLite, ONNX, and QNN}, enforcing correctness
-        across model updates.}
-        
-        \resumeItem{\textbf{Deployed always-on sensor intelligence at 50 Hz} in-sensor (ISPU/MLC, zero
-        host-MCU compute) on SensorTile.box for fall detection, airplane mode and personalized
-        wrist-tilt recognition, preserving battery life.}
 
+        \resumeItem{\textbf{Deployed inference both cloud-served (Firebase ML/GCP)} and on-device via Qualcomm AI Runtime (QNN/QAIRT C-API via C++ JNI bridge into Kotlin/Compose), validating in the cloud before porting to the \textbf{Snapdragon NPU}. Trained on AWS SageMaker \& shown at \textbf{CES 2026}.}
+
+        \resumeItem{\textbf{Built a pedestrian dead-reckoning Android app (Google Maps SDK, GCP)} layering GPS-assisted drift correction over ST's IMU-only PDR library to bound position error over distance.}
+    
+        \resumeItem{Implemented \textbf{IMU sensor preprocessing from Python to C++ over 512-sample / 208 Hz windows} (Butterworth filtering, RobustScaler, ring-buffer windowing), removing the Python dependency on-device.}
+    
+        \resumeItem{Developed \textbf{C/Python regression harness} validating exported-model outputs against Python references across TFLite, ONNX, and QNN targets, enforcing numerical correctness across model updates.}
+        
+        \resumeItem{\textbf{Rebuilt evaluation and checkpointing for an inherited VR head-motion prediction training pipeline} after proving the existing metrics could not detect progress, recovering best results from \textbf{79\%} of evaluations that had been silently discarding them.}
+        
       \resumeItemListEnd
+
     \resumeSubheading
       {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
       {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
       \resumeItemListStart
+        \resumeItem{Optimized \textbf{STM32F105 BMS round-robin polling latency from 7 s to 0.5 s} by removing blocking CAN/thermistor delays and switching to static-lifetime buffers across an \textbf{8-module, 768-cell 400 V} pack.}
         
-        \resumeItem{\textbf{Improved real-time BMS observability} by building a \textbf{CAN - InfluxDB - Grafana} telemetry pipeline for live diagnostics, fault visibility, and team-wide debugging across a \textbf{400 V Formula SAE} battery system.}
-                
-        \resumeItem{\textbf{Optimized STM32 BMS data reliability} by removing blocking CAN delays, adding mailbox-aware transmit logic, and supporting 1 Hz battery telemetry for downstream monitoring and analysis.}
+        \resumeItem{Improved \textbf{real-time BMS observability} by building a \textbf{CAN $\rightarrow$ InfluxDB $\rightarrow$ Grafana} telemetry pipeline for live diagnostics and team-wide debugging across a \textbf{400 V} battery system.}
         
-        \resumeItem{\textbf{Architected the STM32 BMS firmware using observer and factory patterns} (C function-pointer dispatch) for sensor polling and CAN module instantiation, achieving \textbf{3\% SoC estimation error (MAE)}.}
-      
+        \resumeItem{Developed \textbf{Python HIL test suite} on a physical breakout board emulating an accumulator module, validating OV/UV thresholds and fault logic without a live battery pack.}
+        
       \resumeItemListEnd
+
+    \resumeSubheading
+      {\textbf{Theta Tau Professional Engineering Fraternity ($\Omega$E Chapter)}}{San Jose, CA}
+      {\textbf{Backend Engineer \& Webmaster} $|$ \normalfont{sjsuthetatau.org $\cdot$ github.com/Theta-Tau-SJSU-Software}}{Jan 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{\textbf{Shipped a full-stack club-operations platform (Next.js/TypeScript + Express.js/Supabase)} with role-based auth gating API access and UI rendering for events, voting, and member management; replaced manual spreadsheet workflows for 70+ members.}
+        
+        \resumeItem{Enforced authorization with Postgres row-level security policies in Supabase, restricting record access by member role at the database layer rather than application code.}
+        
+        \resumeItem{\textbf{Automated deployments via GitHub Actions} → \textbf{Vercel} with in-pipeline database migrations.}
+        
+      \resumeItemListEnd
+
   \resumeSubHeadingListEnd
 
+%-----------PATENT APPLICATIONS-----------
 \section{Patent Applications}
   \resumeSubHeadingListStart
     \resumeProjectHeading
       {\textbf{Glasses with Wellness and Health Monitoring} - STMicroelectronics, Co-inventor}{Filed May 2026}
   \resumeSubHeadingListEnd
 
+%-----------PROJECTS-----------
 \section{Projects}
   \resumeSubHeadingListStart
+    
     \resumeProjectHeading
-        {\textbf{Nemotron-H Fine-Tuning --- Kaggle NLP Competition} $|$
-          \emph{Python, PyTorch, LoRA, llama.cpp}}{2026}
-        \resumeItemListStart
-            \resumeItem{\textbf{Improved controlled task accuracy by +19.6–22.5 absolute percentage points} by building a LoRA fine-tuning and evaluation pipeline for Nemotron-H 4B (Hybrid Mamba-Attention), \textbf{training 20.2M / 3.99B parameters (0.5\%) on 8,000+ self-generated reasoning traces} with assistant-only label masking.}
-            \resumeItem{\textbf{Diagnosed FP32/BF16 Mamba kernel divergence}, restricted LoRA to attention/MLP targets, and wrote a training loop with no-cache chunked inference after the stock Trainer/generate() diverged on cached SSM state.}
-        \resumeItemListEnd
+      {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$ \emph{Python, pymavlink, OpenCV, JetPack 6, CUDA 12.6}}{2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Built and flight-tested the onboard mission runtime on NVIDIA Jetson Orin Nano}, integrating Pixhawk MAVLink control (arm, takeoff, altitude, XY, rotation over \textbf{921600-baud UART}) with concurrent 4 Hz GPS telemetry and 1080p OpenCV capture.}
+        
+        \resumeItem{\textbf{Ran CUDA YOLOv8n detection/upload loop} with GPS geotagging, gating uploads on GPS-fix readiness.}
+        
+      \resumeItemListEnd
+
     \resumeProjectHeading
-        {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$
-          \emph{Python, YOLOv8n, CUDA, Jetson Orin, MAVLink}}{2026}
-        \resumeItemListStart
-            \resumeItem{\textbf{Owned the onboard embedded layer on NVIDIA Jetson Orin Nano}, integrating Pixhawk MAVLink flight control, GPS telemetry, and a YOLOv8n inference/upload loop into a single mission runtime.}
-            \resumeItem{\textbf{Implemented and flight-tested the MAVLink control path} for takeoff, altitude, XY, and rotation over 921600-baud UART with 4 Hz telemetry polling; gated geotagged YOLOv8n detections on GPS readiness.}
-        \resumeItemListEnd
+      {\textbf{Retain --- AI Lecture Generation Platform} $|$ \emph{React, Express.js, PostgreSQL, AWS S3, Pinecone}}{2025}
+      \resumeItemListStart
+
+        \resumeItem{\textbf{Built an Express.js REST backend (7 endpoints, bcrypt auth}) over a 3-table PostgreSQL schema, with a Multer→S3 PDF upload pipeline persisting document URLs to Postgres.}
+
+        \resumeItem{\textbf{Built a Flask RAG microservice} chunking PDFs, embedding with OpenAI, and running top-3 Pinecone retrieval to ground GPT-generated lecture transcripts.}
+        
+      \resumeItemListEnd
+  
   \resumeSubHeadingListEnd
 
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+        \textbf{Languages}{: Python, C++, C, Java, Kotlin, TypeScript/JavaScript, SQL, Bash/Shell} \\
+        \textbf{Backend \& Systems}{: REST APIs, Express.js, Node.js, Flask, Linux, Multithreading, JNI/NDK, Real-time Pipelines} \\
+        \textbf{Infrastructure}{: PostgreSQL, Supabase, InfluxDB, Pinecone, AWS S3, Docker, Grafana, GCP (BigQuery, Maps SDK)} \\
+\textbf{Tools \& Testing}{: Git, GitHub Actions, Bazel, CI/CD, CMake, Gradle, PyTorch, 
+TFLite/ONNX, Claude Code / OpenCode (agentic coding, code-review augmentation, MATLAB/Simulink)} \\    }}
+ \end{itemize}
+
+%-------------------------------------------
 \end{document}
