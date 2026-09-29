@@ -117,33 +117,29 @@
       {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
       \resumeItemListStart
         
-        \resumeItem{\textbf{Designed a 129 KB, 103K-parameter CNN-LSTM achieving 0.059 m/s MAE} for
-        walking-speed estimation on \textbf{Qualcomm Snapdragon 8 Elite Gen 5 NPU}; built and debugged
-        the full QNN/QAIRT C-API inference path and C++ JNI bridge into a production Kotlin/Compose
-        Android app, with native C++ preprocessing for raw IMU streams at \textbf{208 Hz}.
-        \textbf{Demoed @ CES 2026.}}
+        \resumeItem{
+          \textbf{Designed a 129 KB, 103K-parameter CNN-LSTM achieving 0.059 m/s MAE} for walking-speed estimation on \textbf{Qualcomm Snapdragon 8 Elite Gen 5 NPU}; built and debugged the full QNN/QAIRT C-API inference path and C++ JNI bridge into a production Kotlin/Compose Android app, with native C++ preprocessing for raw IMU streams at \textbf{208 Hz}. \textbf{Demoed @ CES 2026.}
+        }
+
+        \resumeItem{
+          \textbf{Built the PyTorch $\rightarrow$ ONNX $\rightarrow$ QNN deployment path for an 887K-parameter VR head-motion forecaster} on Qualcomm Hexagon HTP v81 / HDK 8850, matching the PyTorch reference to \textbf{0.056\textdegree} on device; debugged converter/layout failures \& established the target hardware and toolchain from an inherited codebase.
+        }
         
-        \resumeItem{\textbf{Ported a VR head-motion prediction model (887K params) from PyTorch to a
-        Qualcomm Hexagon NPU} (ONNX $\rightarrow$ QAIRT, HTP v81 / HDK 8850), matching the PyTorch
-        reference to \textbf{0.056$^\circ$} on device; established the deployment target by hardware
-        inspection where the inherited codebase specified none.}
+        \resumeItem{
+          \textbf{Led training-system engineering, experiment orchestration, and reproducibility} for the head-motion model, adding AMP + \texttt{torch.compile}, deterministic seed controls, git/argument-stamped checkpoints, timestamped logging, automated diagnostics, and best-checkpoint tracking for long-running GPU experiments.
+        }
         
-        \resumeItem{\textbf{Cut that model's prediction error 41\% near-term and 9\% at the 111 ms
-        target horizon} by implementing and validating a log-map angular loss, after tracing training
-        stalls to an objective whose gradient vanished near convergence.}
+        \resumeItem{
+          \textbf{Ran controlled A/B experiments across loss, context, and model configurations}; validated a log-map angular objective that reduced error \textbf{41\% at +11 ms and 9\% at +111 ms}, and found a 100-sample context matched 300-sample accuracy with lower inference cost.
+        }
         
-        \resumeItem{\textbf{Rebuilt training diagnostics} after proving the incumbent metrics could not
-        detect progress (horizon-average correlated 0.996 with the target); per-horizon record tracking
-        against a measured noise band exposed \textbf{79\% of evaluations retaining no recoverable
-        weights}.}
+        \resumeItem{
+          \textbf{Partnered with deployment engineers to resolve accelerator compatibility issues}, redesigning attention pooling around an unsupported runtime MatMul and profiling model-size / accuracy tradeoffs to identify smaller candidates for edge deployment.
+        }
         
-        \resumeItem{\textbf{Built an integration test framework} (C/Python regression harness)
-        validating exported-model outputs across \textbf{TFLite, ONNX, and QNN}, enforcing correctness
-        across model updates.}
-        
-        \resumeItem{\textbf{Deployed always-on sensor intelligence at 50 Hz} in-sensor (ISPU/MLC, zero
-        host-MCU compute) on SensorTile.box for fall detection, airplane mode and personalized
-        wrist-tilt recognition, preserving battery life.}
+        \resumeItem{
+          \textbf{Deployed always-on sensor intelligence at 50 Hz} in-sensor (ISPU/MLC, zero host-MCU compute) on SensorTile.box for fall detection, airplane mode and personalized wrist-tilt recognition, preserving battery life.
+        }
 
       \resumeItemListEnd
     \resumeSubheading
@@ -151,19 +147,27 @@
       {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
       \resumeItemListStart
         
-        \resumeItem{\textbf{Improved real-time BMS observability} by building a \textbf{CAN - InfluxDB - Grafana} telemetry pipeline for live diagnostics, fault visibility, and team-wide debugging across a \textbf{400 V Formula SAE} battery system.}
+        \resumeItem{
+          \textbf{Improved real-time BMS observability} by building a \textbf{CAN --- InfluxDB --- Grafana} telemetry pipeline for live diagnostics, fault visibility, and team-wide debugging across a \textbf{400 V Formula SAE} battery system.
+        }
                 
-        \resumeItem{\textbf{Optimized STM32 BMS data reliability} by removing blocking CAN delays, adding mailbox-aware transmit logic, and supporting 1 Hz battery telemetry for downstream monitoring and analysis.}
+        \resumeItem{
+          \textbf{Optimized STM32 BMS data reliability} by removing blocking CAN delays, adding mailbox-aware transmit logic, and supporting 1 Hz battery telemetry for downstream monitoring and analysis.
+        }
         
-        \resumeItem{\textbf{Architected the STM32 BMS firmware using observer and factory patterns} (C function-pointer dispatch) for sensor polling and CAN module instantiation, achieving \textbf{3\% SoC estimation error (MAE)}.}
+        \resumeItem{
+          \textbf{Architected the STM32 BMS firmware using observer and factory patterns} (C function-pointer dispatch) for sensor polling and CAN module instantiation, achieving \textbf{3\% SoC estimation error (MAE)}.
+        }
       
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
-\section{Patent Applications}
+\section{Patents \& Invention Disclosures}
   \resumeSubHeadingListStart
     \resumeProjectHeading
-      {\textbf{Glasses with Wellness and Health Monitoring} - STMicroelectronics, Co-inventor}{Filed May 2026}
+      {\textbf{Motion-to-Photon Latency Compensation Using Time-Series Foundation Models for XR/AR/VR Glasses} -- STMicroelectronics, Co-inventor}{Invention Disclosure, 2026}
+    \resumeProjectHeading
+      {\textbf{Glasses with Wellness and Health Monitoring} -- STMicroelectronics, Co-inventor}{Patent Application Filed May 2026}
   \resumeSubHeadingListEnd
 
 \section{Projects}
@@ -172,15 +176,23 @@
         {\textbf{Nemotron-H Fine-Tuning --- Kaggle NLP Competition} $|$
           \emph{Python, PyTorch, LoRA, llama.cpp}}{2026}
         \resumeItemListStart
-            \resumeItem{\textbf{Improved controlled task accuracy by +19.6–22.5 absolute percentage points} by building a LoRA fine-tuning and evaluation pipeline for Nemotron-H 4B (Hybrid Mamba-Attention), \textbf{training 20.2M / 3.99B parameters (0.5\%) on 8,000+ self-generated reasoning traces} with assistant-only label masking.}
-            \resumeItem{\textbf{Diagnosed FP32/BF16 Mamba kernel divergence}, restricted LoRA to attention/MLP targets, and wrote a training loop with no-cache chunked inference after the stock Trainer/generate() diverged on cached SSM state.}
+            \resumeItem{
+              \textbf{Improved controlled task accuracy by +19.6–22.5 absolute percentage points} by building a LoRA fine-tuning and evaluation pipeline for Nemotron-H 4B (Hybrid Mamba-Attention), \textbf{training 20.2M / 3.99B parameters (0.5\%) on 8,000+ self-generated reasoning traces} with assistant-only label masking.
+            }
+            \resumeItem{
+              \textbf{Diagnosed FP32/BF16 Mamba kernel divergence}, restricted LoRA to attention/MLP targets, and wrote a training loop with no-cache chunked inference after the stock Trainer/generate() diverged on cached SSM state.
+            }
         \resumeItemListEnd
     \resumeProjectHeading
         {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$
           \emph{Python, YOLOv8n, CUDA, Jetson Orin, MAVLink}}{2026}
         \resumeItemListStart
-            \resumeItem{\textbf{Owned the onboard embedded layer on NVIDIA Jetson Orin Nano}, integrating Pixhawk MAVLink flight control, GPS telemetry, and a YOLOv8n inference/upload loop into a single mission runtime.}
-            \resumeItem{\textbf{Implemented and flight-tested the MAVLink control path} for takeoff, altitude, XY, and rotation over 921600-baud UART with 4 Hz telemetry polling; gated geotagged YOLOv8n detections on GPS readiness.}
+            \resumeItem{
+              \textbf{Owned the onboard embedded layer on NVIDIA Jetson Orin Nano}, integrating Pixhawk MAVLink flight control, GPS telemetry, and a YOLOv8n inference/upload loop into a single mission runtime.
+            }
+            \resumeItem{
+              \textbf{Implemented and flight-tested the MAVLink control path} for takeoff, altitude, XY, and rotation over 921600-baud UART with 4 Hz telemetry polling; gated geotagged YOLOv8n detections on GPS readiness.
+            }
         \resumeItemListEnd
   \resumeSubHeadingListEnd
 
