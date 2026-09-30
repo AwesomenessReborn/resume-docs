@@ -84,6 +84,13 @@
     \end{tabular*}\vspace{-7pt}
 }
 
+\newcommand{\resumePatentHeading}[3]{
+    \item
+    \begin{tabularx}{0.97\textwidth}[t]{@{}>{\raggedright\arraybackslash}X r@{}}
+      \small\textbf{#1} -- \textit{#2} & \small #3 \\
+    \end{tabularx}\vspace{-7pt}
+}
+
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -130,9 +137,9 @@
       
         \resumeItem{\textbf{Implemented a C++ JNI inference bridge} for a \textbf{129 KB, 103K-parameter CNN-LSTM} targeting Qualcomm Snapdragon NPU via \textbf{QNN/QAIRT C APIs}, connecting native model execution and preprocessing to a Kotlin/Compose Android app; \textbf{0.059 m/s MAE} on IMU walking-speed estimation.}
         
-        \resumeItem{\textbf{Ported IMU preprocessing from Python to native C++} over \textbf{512-sample windows at 208 Hz}, using Butterworth filtering, RobustScaler normalization, and ring-buffer windowing, validated through C/Python regression tests.}
+        \resumeItem{\textbf{Ported IMU preprocessing from Python to C++} over \textbf{512-sample windows at 208 Hz}, using Butterworth filtering, RobustScaler normalization, and ring-buffer windowing, validated through C/Python tests.}    
         
-        \resumeItem{\textbf{Built a C/Python regression harness} that automatically validates exported-model outputs against Python references, enforcing numerical correctness across \textbf{TFLite, ONNX, and QNN} deployment targets.}
+        \resumeItem{\textbf{Adapted an XR head-motion forecasting model for edge-accelerator constraints}, profiling parameter/context-size tradeoffs and redesigning incompatible attention operations when Qualcomm accelerator kernels could not support the original compute graph.}
         
         \resumeItem{\textbf{Deployed always-on sensor intelligence} at \textbf{50 Hz entirely in-sensor} using ISPU/MLC with zero host-MCU compute for fall detection and personalized wrist-tilt recognition on SensorTile.box.}
                 
@@ -142,7 +149,7 @@
       {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
       {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
       \resumeItemListStart
-        \resumeItem{\textbf{Improved STM32F105 BMS round-robin polling latency} from 7 s to 0.5 s for a 400 V, 12S8P x 8 module Formula SAE battery by removing blocking CAN/thermistor delays, refactoring module reads, and replacing dynamic buffers with static lifetime buffers.}
+        \resumeItem{\textbf{Improved STM32F105 BMS round-robin polling latency (embedded C firmware)} from 7 s to 0.5 s for a 400 V, 12S8P x 8 module Formula SAE battery by removing blocking CAN/thermistor delays, refactoring module reads, and replacing dynamic buffers with static lifetime buffers.}
         
         \resumeItem{\textbf{Implemented interrupt-driven BMS fault handling} using \textbf{TIM7/NVIC} \textbf{ISR} logic and 8-bit fault/ 
         warning state bytes for HV safety shutdown signaling across an 8-module accumulator architecture.}
@@ -155,14 +162,17 @@
  
   \resumeSubHeadingListEnd
  
-%-----------PATENT APPLICATIONS-----------
-\section{Patent Applications}
+%-----------PATENTS & INVENTION DISCLOSURES-----------
+\section{Patents \& Invention Disclosures}
   \resumeSubHeadingListStart
-    \resumeProjectHeading
-      {\textbf{Glasses with Wellness and Health Monitoring} - STMicroelectronics, Co-inventor}{Filed May 2026}
-      \resumeItemListStart
-        \resumeItem{Developed embedded ML and sensor-intelligence components for privacy-conscious wearable monitoring.}
-      \resumeItemListEnd
+    \resumePatentHeading
+      {Glasses with Wellness and Health Monitoring}
+      {STMicroelectronics, Co-inventor}
+      {Filed May 2026}
+    \resumePatentHeading
+      {Motion-to-Photon Latency Compensation Using Time-Series Foundation Models for XR/AR/VR Glasses}
+      {STMicroelectronics, Co-inventor}
+      {Invention Disclosure, 2026}
   \resumeSubHeadingListEnd
  
 %-----------PROJECTS-----------
@@ -190,7 +200,7 @@
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
      \textbf{Languages}{: C, C++, Python, Verilog, Java, Kotlin, x86/MIPS Assembly} \\
-     \textbf{Embedded \& Protocols}{: STM32 (Cortex-M3), Device Drivers (SPI, isoSPI, I2C, CAN, BLE), MEMS IMUs, Real-Time Systems, DSP, Signal Processing} \\
+     \textbf{Embedded \& Protocols}{: STM32 (ARM Cortex-M3), Device Drivers (SPI, isoSPI, I2C, CAN, BLE), MEMS IMUs, Real-Time Systems, DSP, Signal Processing} \\
      \textbf{Testing \& Validation}{: HIL Testing, JNI Harness, Regression Testing, Software Simulation, Performance Benchmarking} \\
      \textbf{EDA \& Simulation}{: Altium, LTspice, MATLAB, Simulink, Xilinx Vivado} \\
      \textbf{Development Tools}{: Git, JTAG Debuggers, Oscilloscopes, CMake, Make, STM32CubeIDE} \\
