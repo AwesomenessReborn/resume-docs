@@ -10,10 +10,12 @@
 
 ## Build And Validation
 
-- Run `make` to build every resume.
-- Run `make ee-cmpe`, `make ml`, or `make swe` to build one variant.
-- Use Make to build and publish. Make compiles in `build/work/<variant>/` and copies only the PDF to `build/pdf/` after a successful compile. Direct `latexmk` runs compile working output only and never publish to `build/pdf/`.
-- Run `make check` after source or shared-layout changes. It reads each variant's log from `build/work/<variant>/`. Every resume must compile successfully and remain exactly one page.
+- Run `make` to build every resume. It prints a per-resume report: status (`built`, `unchanged`, or `FAILED`), page count, and a tree of every LaTeX error and warning from the log. A non-zero exit means at least one resume failed to compile or publish.
+- Run `make ee-cmpe`, `make ml`, or `make swe` to build and report one variant.
+- Use Make to build and publish. Make compiles in `build/work/<variant>/` and publishes only the PDF to `build/pdf/` after a successful compile. Direct `latexmk` runs compile working output only and never publish to `build/pdf/`.
+- Run `make check` (the same as `make STRICT=1`) after source or shared-layout changes. Every resume must compile successfully and remain exactly one page; `make check` exits non-zero on page-count or overfull-box warnings. Other warnings are informational.
+- When a build fails, fix the first listed error first; later errors may be caused by it. For raw output, read `build/work/<variant>/hari-resume-<variant>.log` or run `make V=1`.
+- Report layout warnings (page count, overfull boxes) to the user; never auto-fix them by shrinking fonts, margins, or spacing, or by cutting content.
 - Run `make clean` to remove only the canonical `build/` output.
 - Do not automatically open or render PDFs or images. Use build logs and textual page-count checks unless the user explicitly requests visual inspection.
 

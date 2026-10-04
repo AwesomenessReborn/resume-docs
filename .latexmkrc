@@ -6,4 +6,9 @@ $out_dir = 'build/work';
 $aux_dir = 'build/work';
 $max_repeat = 5;
 
-$pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error %O %S';
+# Keep log lines unwrapped so scripts/build-report.pl can parse them.
+$ENV{max_print_line} = 10000;
+
+# No -halt-on-error: pdflatex keeps going after an error so the log (and the
+# `make` report) lists every error, not just the first one.
+$pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S';
