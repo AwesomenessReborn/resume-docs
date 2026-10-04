@@ -1,23 +1,31 @@
 LATEXMK ?= latexmk
 BUILD_DIR := build
+PDF_DIR := $(BUILD_DIR)/pdf
+WORK_DIR := $(BUILD_DIR)/work
 SOURCES := hari-resume-ee-cmpe.tex hari-resume-ml.tex hari-resume-swe.tex
-PDFS := $(SOURCES:%.tex=$(BUILD_DIR)/%.pdf)
+PDFS := $(SOURCES:%.tex=$(PDF_DIR)/%.pdf)
 
 .PHONY: all ee-cmpe ml swe check clean
 
+# Remove a partially written target if its recipe fails after touching it.
+.DELETE_ON_ERROR:
+
 all: $(PDFS)
 
-ee-cmpe: $(BUILD_DIR)/hari-resume-ee-cmpe.pdf
+ee-cmpe: $(PDF_DIR)/hari-resume-ee-cmpe.pdf
 
-ml: $(BUILD_DIR)/hari-resume-ml.pdf
+ml: $(PDF_DIR)/hari-resume-ml.pdf
 
-swe: $(BUILD_DIR)/hari-resume-swe.pdf
+swe: $(PDF_DIR)/hari-resume-swe.pdf
 
-$(BUILD_DIR)/%.pdf: %.tex shared/preamble.tex shared/commands.tex .latexmkrc | $(BUILD_DIR)
-	$(LATEXMK) -pdf $<
-
-$(BUILD_DIR):
-	mkdir -p $@
+# Compile in the variant's own work directory, then publish only the PDF.
+# Make stops at the first failing command, so a failed compile never replaces
+# the last published PDF. The working PDF stays put for latexmk's incremental
+# dependency tracking.
+$(PDF_DIR)/hari-resume-%.pdf: hari-resume-%.tex shared/preamble.tex shared/commands.tex .latexmkrc
+	$(LATEXMK) -pdf -outdir=$(WORK_DIR)/$* -auxdir=$(WORK_DIR)/$* $<
+	mkdir -p $(@D)
+	cp $(WORK_DIR)/$*/hari-resume-$*.pdf $@
 
 # Page count is a warning, not an error: a resume over one page is a content
 # decision for the author, never something to auto-fix. STRICT=1 makes it fail.
@@ -27,7 +35,7 @@ check: all
 	@failed=0; warned=0; \
 	for source in $(SOURCES); do \
 		name=$${source%.tex}; \
-		log="$(BUILD_DIR)/$$name.log"; \
+		log="$(WORK_DIR)/$${name#hari-resume-}/$$name.log"; \
 		pages=$$(tr -d '\n' < "$$log" | grep -Eo '\([0-9]+ pages?,' | tail -n 1 | grep -Eo '[0-9]+'); \
 		overfull=$$(grep -c '^Overfull \\hbox' "$$log"); \
 		if [ -z "$$pages" ]; then \
