@@ -2,6 +2,10 @@
 /dist/
 /tmp-resume-*/
 
+# Local reference copies downloaded from Overleaf (sources and PDFs) for comparison.
+# /raw/
+/canonical-cmp/
+
 *.pdf
 *.aux
 *.log

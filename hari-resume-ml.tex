@@ -27,7 +27,7 @@
  \resumeSubHeadingListStart
     \small{\item{
         \textbf{Languages}{: C/C++, Embedded C Programming,  Python, Kotlin, Java, SQL} \\
-        \textbf{ML \& AI}{: PyTorch, Tensorflow, TFLite, ONNX, QNN/QAIRT, LoRA fine-tuning, scikit-learn, NumPy, Pandas, SciPy.} \\
+        \textbf{ML \& AI}{: PyTorch, Tensorflow, TFLite, ONNX, QNN/QAIRT, CUDA, LoRA fine-tuning, llama.cpp, scikit-learn, NumPy, Pandas, SciPy.} \\
         \textbf{Signal Processing \& Analysis}{: MATLAB (familiar), Simulations, analytical modeling, feasibility studies, Digital filtering (Butterworth), feature extraction (FFT, windowing), time-series analysis, sensor fusion.} \\
         \textbf{Developer Tools}{: Android (NDK/JNI, Gradle, adb/logcat), CMake, Docker, GitHub Actions, CI/CD, Claude Code, OpenCode (agentic coding workflows, code review augmentation).} \\
         \textbf{Data \& Infrastructure}{: PostgreSQL, InfluxDB, Grafana, AWS S3.} \\
@@ -58,9 +58,9 @@
           \textbf{Ran controlled A/B experiments across loss, context, and model configurations}; validated a log-map angular objective that reduced error \textbf{41\% at +11 ms and 9\% at +111 ms}, and found a 100-sample context matched 300-sample accuracy with lower inference cost.
         }
         
-        % \resumeItem{
-        %   \textbf{Partnered with deployment engineers to resolve accelerator compatibility issues}, redesigning attention pooling around an unsupported runtime MatMul and profiling model-size / accuracy tradeoffs to identify smaller candidates for edge deployment.
-        % }
+        \resumeItem{
+          \textbf{Partnered with deployment engineers to resolve accelerator compatibility issues}, redesigning attention pooling around an unsupported runtime MatMul and profiling model-size / accuracy tradeoffs to identify smaller candidates for edge deployment.
+        }
         
         \resumeItem{
           \textbf{Deployed always-on sensor intelligence at 50 Hz} in-sensor (ISPU/MLC, zero host-MCU compute) on SensorTile.box for fall detection, airplane mode and personalized wrist-tilt recognition, preserving battery life.
@@ -87,17 +87,16 @@
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
-%-----------PATENTS & INVENTION DISCLOSURES-----------
 \section{Patents \& Invention Disclosures}
   \resumeSubHeadingListStart
-    \resumePatentHeading
-      {Glasses with Wellness and Health Monitoring}
-      {STMicroelectronics, Co-inventor}
-      {Filed May 2026}
     \resumePatentHeading
       {Motion-to-Photon Latency Compensation Using Time-Series Foundation Models for XR/AR/VR Glasses}
       {STMicroelectronics, Co-inventor}
       {Invention Disclosure, 2026}
+    \resumePatentHeading
+      {Glasses with Wellness and Health Monitoring}
+      {STMicroelectronics, Co-inventor}
+      {Patent Application Filed May 2026}
   \resumeSubHeadingListEnd
 
 \section{Projects}
