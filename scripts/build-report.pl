@@ -35,10 +35,13 @@ for my $v (@variants) {
     my $log  = "$work/$name.log";
 
     my $started = time;
-    my ($status, $output_file) = build($pdf, $work, $log);
-    # A log older than this run (e.g. latexmk never started) says nothing about it.
+    my ($status, $output_file, $nothing_to_do, $setup_error) = build($pdf, $work, $log);
+    # A log older than this run (e.g. latexmk never started) says nothing about
+    # it, unless latexmk ran and reported a no-op: then the log still holds the
+    # cached result, including the errors from a previous failed compile.
     my $log_fresh = -r $log && (stat $log)[9] >= $started;
-    my $use_log   = -r $log && ($status ne 'failed' || $log_fresh);
+    my $use_log   = !defined $setup_error && -r $log
+                    && ($status ne 'failed' || $log_fresh || $nothing_to_do);
     my $info = $use_log ? parse_log($log) : { pages => undef, errors => [], warnings => [] };
 
     my @items;
@@ -57,13 +60,17 @@ for my $v (@variants) {
     if (@errors > $max_errors) {
         push @items, { kind => 'error', msg => '… and ' . (@errors - $max_errors) . ' more error(s); see the log' };
     }
-    if ($status eq 'failed' && !@errors) {
+    if (defined $setup_error) {
+        push @items, { kind => 'error', msg => $setup_error };
+    }
+    elsif ($status eq 'failed' && !@errors) {
         push @items, { kind => 'error', msg => 'build failed with no LaTeX errors in the log',
                        ctx => last_line($output_file) };
     }
     push @items, @{ $info->{warnings} };
     if ($status eq 'failed') {
-        push @items, { kind => 'info', msg => 'full log: ' . (-r $log ? $log : $output_file) };
+        push @items, { kind => 'info', msg => 'full log: ' . (-r $log ? $log : $output_file) }
+            unless defined $setup_error;
     }
 
     my $layout = grep { $_->{layout} } @items;
@@ -96,8 +103,9 @@ if ($any_layout) {
 
 exit(($any_failed || ($strict && $any_layout)) ? 1 : 0);
 
-# Returns (status, captured-output path). Status is one of
-# built | unchanged | republished | failed.
+# Returns (status, captured-output path, latexmk-reported-no-op, setup error).
+# Status is one of built | unchanged | republished | failed. A filesystem
+# failure before the build starts fails only this variant, not the whole run.
 sub build {
     my ($pdf, $work, $log) = @_;
     my $output_file = "$work/make-output.txt";
@@ -107,8 +115,13 @@ sub build {
     # reliable where Make 3.81's 1-second timestamps are not. A no-op costs
     # well under a second and leaves an identical published PDF in place.
     my @cmd = ($make, '--no-print-directory', '-s', '-B', $pdf);
-    make_path($work);
-    open my $out, '>', $output_file or die "cannot write $output_file: $!\n";
+    my $out;
+    eval { make_path($work); 1 } or do {
+        (my $err = $@) =~ s/ at \S+ line \d+\.?\n?\z//;
+        return ('failed', undef, 0, "cannot create $work: $err");
+    };
+    open $out, '>', $output_file
+        or return ('failed', undef, 0, "cannot write $output_file: $!");
     my $pid = open my $pipe, '-|';
     die "cannot fork: $!\n" unless defined $pid;
     if (!$pid) {
@@ -124,13 +137,13 @@ sub build {
     close $pipe;
     my $exit = $?;
     close $out;
-    return ('failed', $output_file) if $exit != 0;
-    return ('built', $output_file) unless $nothing_to_do;
+    return ('failed', $output_file, $nothing_to_do) if $exit != 0;
+    return ('built', $output_file, 0) unless $nothing_to_do;
     # No compile, but the published copy was missing or stale (e.g. after a
     # failed publish): it now matches the last successful compile.
     my $published_after = digest($pdf) // '';
-    return ('republished', $output_file) if ($published_before // '') ne $published_after;
-    return ('unchanged', $output_file);
+    return ('republished', $output_file, 1) if ($published_before // '') ne $published_after;
+    return ('unchanged', $output_file, 1);
 }
 
 sub digest {
