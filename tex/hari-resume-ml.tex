@@ -1,87 +1,12 @@
 \documentclass[letterpaper,11pt]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{tabularx}
-\input{glyphtounicode}
-
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-
-\addtolength{\topmargin}{-0.88in}
-\addtolength{\textheight}{1.9in}
-
-\urlstyle{same}
-
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
-
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
-
-\pdfgentounicode=1
-
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-
-\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=-1pt,topsep=2pt]}
-
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\input{shared/preamble}
+\input{shared/commands}
 
 \begin{document}
 
 \begin{center}
-    \textbf{\Huge \scshape Harinandan Kotamsetti} \\ \vspace{1pt}
+  \resumeName{Harinandan Kotamsetti}
     \small Cupertino, CA $|$ +1 (669) 264-9458 $|$
     \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$
     \href{https://www.linkedin.com/in/hareee234/}{\underline{linkedin.com/in/hareee234}} $|$
@@ -99,16 +24,16 @@
   \resumeSubHeadingListEnd
 
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
+ \resumeSubHeadingListStart
     \small{\item{
         \textbf{Languages}{: C/C++, Embedded C Programming,  Python, Kotlin, Java, SQL} \\
-        \textbf{ML \& AI}{: PyTorch, Tensorflow, TFLite, ONNX, QNN/QAIRT, CUDA, LoRA fine-tuning, llama.cpp, scikit-learn, NumPy, Pandas, SciPy.} \\
+        \textbf{ML \& AI}{: PyTorch, Tensorflow, TFLite, ONNX, QNN/QAIRT, LoRA fine-tuning, scikit-learn, NumPy, Pandas, SciPy.} \\
         \textbf{Signal Processing \& Analysis}{: MATLAB (familiar), Simulations, analytical modeling, feasibility studies, Digital filtering (Butterworth), feature extraction (FFT, windowing), time-series analysis, sensor fusion.} \\
         \textbf{Developer Tools}{: Android (NDK/JNI, Gradle, adb/logcat), CMake, Docker, GitHub Actions, CI/CD, Claude Code, OpenCode (agentic coding workflows, code review augmentation).} \\
         \textbf{Data \& Infrastructure}{: PostgreSQL, InfluxDB, Grafana, AWS S3.} \\
         \textbf{Concepts}{: On-device ML inference, model deployment, real-time data pipelines, model evaluation, debugging.}
             }}
- \end{itemize}
+ \resumeSubHeadingListEnd
 
 \section{Experience}
   \resumeSubHeadingListStart
@@ -133,9 +58,9 @@
           \textbf{Ran controlled A/B experiments across loss, context, and model configurations}; validated a log-map angular objective that reduced error \textbf{41\% at +11 ms and 9\% at +111 ms}, and found a 100-sample context matched 300-sample accuracy with lower inference cost.
         }
         
-        \resumeItem{
-          \textbf{Partnered with deployment engineers to resolve accelerator compatibility issues}, redesigning attention pooling around an unsupported runtime MatMul and profiling model-size / accuracy tradeoffs to identify smaller candidates for edge deployment.
-        }
+        % \resumeItem{
+        %   \textbf{Partnered with deployment engineers to resolve accelerator compatibility issues}, redesigning attention pooling around an unsupported runtime MatMul and profiling model-size / accuracy tradeoffs to identify smaller candidates for edge deployment.
+        % }
         
         \resumeItem{
           \textbf{Deployed always-on sensor intelligence at 50 Hz} in-sensor (ISPU/MLC, zero host-MCU compute) on SensorTile.box for fall detection, airplane mode and personalized wrist-tilt recognition, preserving battery life.
@@ -162,12 +87,17 @@
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
+%-----------PATENTS & INVENTION DISCLOSURES-----------
 \section{Patents \& Invention Disclosures}
   \resumeSubHeadingListStart
-    \resumeProjectHeading
-      {\textbf{Motion-to-Photon Latency Compensation Using Time-Series Foundation Models for XR/AR/VR Glasses} -- STMicroelectronics, Co-inventor}{Invention Disclosure, 2026}
-    \resumeProjectHeading
-      {\textbf{Glasses with Wellness and Health Monitoring} -- STMicroelectronics, Co-inventor}{Patent Application Filed May 2026}
+    \resumePatentHeading
+      {Glasses with Wellness and Health Monitoring}
+      {STMicroelectronics, Co-inventor}
+      {Filed May 2026}
+    \resumePatentHeading
+      {Motion-to-Photon Latency Compensation Using Time-Series Foundation Models for XR/AR/VR Glasses}
+      {STMicroelectronics, Co-inventor}
+      {Invention Disclosure, 2026}
   \resumeSubHeadingListEnd
 
 \section{Projects}
