@@ -1,6 +1,6 @@
 {
   "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build/work",
   "latex-workshop.latex.recipe.default": "latexmk (repository)",
   "latex-workshop.latex.recipes": [
     {
@@ -15,9 +15,16 @@
       "name": "latexmk-repository",
       "command": "latexmk",
       "args": [
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
         "-pdf",
+        "-outdir=%OUTDIR%",
+        "-auxdir=%OUTDIR%",
         "%DOC%"
-      ]
+      ],
+      "env": {
+        "TEXINPUTS": "..:"
+      }
     }
   ],
   "latex-workshop.view.pdf.viewer": "tab"

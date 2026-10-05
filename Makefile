@@ -40,7 +40,7 @@ check:
 # The working PDF stays put for latexmk's incremental dependency tracking.
 # The report runs this rule with -B on every build: latexmk's content check
 # decides what changed, because Make 3.81 timestamps only have 1 s resolution.
-$(PDF_DIR)/hari-resume-%.pdf: hari-resume-%.tex shared/preamble.tex shared/commands.tex .latexmkrc
+$(PDF_DIR)/hari-resume-%.pdf: tex/hari-resume-%.tex shared/preamble.tex shared/commands.tex .latexmkrc
 	$(LATEXMK) -pdf -outdir=$(WORK_DIR)/$* -auxdir=$(WORK_DIR)/$* $<
 	mkdir -p $(@D)
 	if cmp -s $(WORK_DIR)/$*/hari-resume-$*.pdf $@; then touch $@; else \

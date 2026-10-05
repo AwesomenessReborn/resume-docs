@@ -2,8 +2,9 @@
 /dist/
 /tmp-resume-*/
 
-# Local reference copies downloaded from Overleaf (sources and PDFs) for comparison.
-# /raw/
+# Local reference copies (e.g. Overleaf downloads) for comparison. The final
+# Overleaf sync is archived in Google Drive: My Drive/resume-docs/overleaf-final-sync-2026-10-04/
+/raw/
 /canonical-cmp/
 
 *.pdf

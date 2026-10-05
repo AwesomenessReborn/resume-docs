@@ -2,11 +2,11 @@
 
 ## Structure
 
-- Keep each resume variant in its top-level `hari-resume-*.tex` file.
+- Keep each resume variant in its own `tex/hari-resume-*.tex` file.
 - Put shared packages and page geometry in `shared/preamble.tex`.
 - Put shared resume commands in `shared/commands.tex`.
+- The final Overleaf sync (2026-10-04) and older resumes are archived in Google Drive `My Drive/resume-docs/`; do not re-add Overleaf exports to the repository.
 - Treat `build/` as generated output; never commit its contents. Final PDFs are published to `build/pdf/`; per-variant compilation artifacts (logs, aux, SyncTeX, working PDF) live in `build/work/<variant>/`.
-- Leave `tmp-resume-*` scratch directories unchanged unless a validation task explicitly requires them.
 
 ## Build And Validation
 

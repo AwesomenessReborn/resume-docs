@@ -4,9 +4,9 @@ LaTeX sources for three resume variants that share one preamble and command set.
 
 | Variant | Source | Make target |
 |---|---|---|
-| EE / CmpE | `hari-resume-ee-cmpe.tex` | `make ee-cmpe` |
-| ML | `hari-resume-ml.tex` | `make ml` |
-| SWE | `hari-resume-swe.tex` | `make swe` |
+| EE / CmpE | `tex/hari-resume-ee-cmpe.tex` | `make ee-cmpe` |
+| ML | `tex/hari-resume-ml.tex` | `make ml` |
+| SWE | `tex/hari-resume-swe.tex` | `make swe` |
 
 Shared packages and page geometry live in `shared/preamble.tex`; shared resume commands live in `shared/commands.tex`.
 
@@ -39,9 +39,9 @@ ml        ✔ built      2 pages   build/pdf/hari-resume-ml.pdf
   ├─ ⚠ page count: 2 pages (target is 1)
   └─ ⚠ fancyhdr: \footskip is too small (0.0pt): …   ×2
 swe       ✘ FAILED     previous PDF kept, not updated
-  ├─ ✘ Undefined control sequence.   hari-resume-swe.tex:8
+  ├─ ✘ Undefined control sequence.   tex/hari-resume-swe.tex:8
   │       l.8 \textbff
-  ├─ ✘ LaTeX Error: Environment itemizee undefined.   hari-resume-swe.tex:10   (may be caused by an earlier error)
+  ├─ ✘ LaTeX Error: Environment itemizee undefined.   tex/hari-resume-swe.tex:10   (may be caused by an earlier error)
   │       l.10 \begin{itemizee}
   └─ → full log: build/work/swe/hari-resume-swe.log
 
@@ -78,7 +78,7 @@ build/
 For each variant, Make runs latexmk in that variant's work directory and, only if compilation succeeds, publishes the PDF into `build/pdf/`. Publishing copies to a temp file in the work directory and renames it into place:
 
 ```sh
-latexmk -pdf -outdir=build/work/swe -auxdir=build/work/swe hari-resume-swe.tex
+latexmk -pdf -outdir=build/work/swe -auxdir=build/work/swe tex/hari-resume-swe.tex
 mkdir -p build/pdf
 cp build/work/swe/hari-resume-swe.pdf build/work/swe/publish.tmp \
   && mv -f build/work/swe/publish.tmp build/pdf/hari-resume-swe.pdf
@@ -95,10 +95,12 @@ cp build/work/swe/hari-resume-swe.pdf build/work/swe/publish.tmp \
 Make is the supported build-and-publish interface. Running latexmk yourself compiles **working output only** and never touches `build/pdf/`:
 
 ```sh
-latexmk -pdf -outdir=build/work/ml -auxdir=build/work/ml hari-resume-ml.tex
+latexmk -pdf -outdir=build/work/ml -auxdir=build/work/ml tex/hari-resume-ml.tex
 ```
 
-A bare `latexmk -pdf <file>.tex` with no directory options falls back to `build/work/` (set in `.latexmkrc`) so nothing is written to the repository root.
+A bare `latexmk -pdf tex/<file>.tex` run from the repository root with no directory options falls back to `build/work/` (set in `.latexmkrc`) so nothing is written to the repository root.
+
+The sources load `\input{shared/...}` relative to the working directory, so run latexmk from the repository root. The VS Code LaTeX Workshop recipe in `.vscode/settings.json` runs from `tex/` instead; it passes the root `.latexmkrc`, sets `TEXINPUTS=..:` so `shared/` resolves, and writes to `build/work/`.
 
 ## Checking layout
 
@@ -108,3 +110,18 @@ Every resume should be exactly one page with no overfull boxes. These two are **
 - `make check` (the same as `make STRICT=1`) builds, prints the same report, and then exits non-zero if any resume has a layout warning. It never blocks or withholds a PDF; it only changes the exit status, for scripts, CI, and agents.
 - Other warnings (fonts, packages, and so on) are shown but never affect the exit status, even with `STRICT=1`.
 - Fix layout problems by editing content deliberately — not by shrinking fonts, margins, or spacing.
+
+## Overleaf history and archive
+
+These resumes were authored on Overleaf until **2026-10-04**, when a final sync brought the local sources in line with the Overleaf versions. Since then, `tex/` plus `make` is the source of truth; Overleaf is no longer used.
+
+Everything outside the LaTeX sources lives in Google Drive at `My Drive/resume-docs/` (see its `MANIFEST.md`):
+
+| Drive path | Contents |
+|---|---|
+| `overleaf-final-sync-2026-10-04/tex/` | Final Overleaf exports (`<variant>.tex`) and their extracted document bodies (`<variant>.tex.body`) |
+| `overleaf-final-sync-2026-10-04/pdf/` | PDFs Overleaf produced from those exports |
+| `baselines/20260930-000909/` | Pre-refactor standalone sources (identical to `main` at `5285ef7`) with their compile logs |
+| `archive/`, `F25/`, `S26/`, `main/` | Older Word/PDF resumes, cover letters, and per-application variants |
+
+The Overleaf exports were briefly committed under `raw/`; they were removed from this branch's history and now exist only in the Drive archive. Local reference copies placed in `raw/` or `canonical-cmp/` are gitignored.
