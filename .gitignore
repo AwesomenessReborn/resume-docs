@@ -1,4 +1,6 @@
 /build/
+/apply-apple/build/
+/apply-apple/pdf/
 /dist/
 /tmp-resume-*/
 

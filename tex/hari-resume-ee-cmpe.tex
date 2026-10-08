@@ -35,13 +35,21 @@
       {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
       \resumeItemListStart
       
-        \resumeItem{\textbf{Implemented a C++ JNI inference bridge} for a \textbf{129 KB, 103K-parameter CNN-LSTM} targeting Qualcomm Snapdragon NPU via \textbf{QNN/QAIRT C APIs}, connecting native model execution and preprocessing to a Kotlin/Compose Android app; \textbf{0.059 m/s MAE} on IMU walking-speed estimation.}
+        \resumeItem{
+          \textbf{Deployed a 129 KB CNN-LSTM (0.059 m/s MAE) to the Snapdragon NPU via Qualcomm QNN}, bridging C++ preprocessing and inference into Android through JNI at $\sim$15 ms per 2.5 s window.
+        }
         
-        \resumeItem{\textbf{Ported IMU preprocessing from Python to C++} over \textbf{512-sample windows at 208 Hz}, using Butterworth filtering, RobustScaler normalization, and ring-buffer windowing, validated through C/Python tests.}    
+        \resumeItem{
+          \textbf{Ported IMU preprocessing from Python to C++} over \textbf{512-sample windows at 208 Hz}, using Butterworth filtering, RobustScaler normalization, and ring-buffer windowing, validated through C/Python tests.
+        }
         
-        \resumeItem{\textbf{Adapted an XR head-motion forecasting model for edge-accelerator constraints}, profiling parameter/context-size tradeoffs and redesigning incompatible attention operations when Qualcomm accelerator kernels could not support the original compute graph.}
+        \resumeItem{
+          \textbf{Ported an 887K-parameter VR head-motion model to Qualcomm's Hexagon NPU} (PyTorch $\rightarrow$ ONNX $\rightarrow$ QAIRT on HTP v81), matching PyTorch output within 0.056\textdegree{} on-device after fixing converter and tensor-layout failures.
+        }
         
-        \resumeItem{\textbf{Deployed always-on sensor intelligence} at \textbf{50 Hz entirely in-sensor} using ISPU/MLC with zero host-MCU compute for fall detection and personalized wrist-tilt recognition on SensorTile.box.}
+        \resumeItem{
+          Deployed always-on fall detection and wrist-tilt recognition entirely on ST's ISPU/MLC with \textbf{zero host-MCU compute}, sustaining 104 Hz sensor fusion at 3.08 ms worst case in $\sim$20 KB code / 1.1 KB RAM.
+        }
                 
       \resumeItemListEnd
  
@@ -49,14 +57,25 @@
       {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
       {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
       \resumeItemListStart
-        \resumeItem{\textbf{Improved STM32F105 BMS round-robin polling latency (embedded C firmware)} from 7 s to 0.5 s for a 400 V, 12S8P x 8 module Formula SAE battery by removing blocking CAN/thermistor delays, refactoring module reads, and replacing dynamic buffers with static lifetime buffers.}
+        \resumeItem{
+          \textbf{Cut STM32F105 BMS polling latency 14$\times$ (7.0 s $\rightarrow$ 0.5 s)} across a 768-cell, 400 V pack by removing blocking CAN/thermistor delays, replacing 10 ms transmit waits with 3-mailbox availability checks, and moving to static buffers.
+        }
         
-        \resumeItem{\textbf{Implemented interrupt-driven BMS fault handling} using \textbf{TIM7/NVIC} \textbf{ISR} logic and 8-bit fault/ 
-        warning state bytes for HV safety shutdown signaling across an 8-module accumulator architecture.}
+        \resumeItem{
+          \textbf{Implemented interrupt-driven BMS fault handling with TIM7/NVIC ISRs}, encoding fault/warning states into 8-bit status bytes for deterministic HV shutdown signaling across the 8-module accumulator.
+        }
         
-        \resumeItem{\textbf{Improved CAN telemetry reliability} by replacing blocking 10 ms transmit delays with STM32 3-mailbox availability checks and 0.5 s reconnect retry logic for reliable 1 Hz BMS data transmission.}
+        \resumeItem{
+          \textbf{Built a Python hardware-in-the-loop test suite} on a breakout board emulating an accumulator module, validating OV/UV thresholds and fault logic without a live 400 V pack.
+        }
         
-        \resumeItem{\textbf{Refactored LTC6811 BMS firmware} \textbf{for LTC6813 migration}, updating ADC register handling, static buffer sizing, and CAN data for 16-bit cell voltage/temperature telemetry across the \textbf{768-cell pack} architecture.}
+        \resumeItem{
+          \textbf{Migrated STM32 BMS firmware from LTC6811 to LTC6813} across a \textbf{768-cell pack}, updating ADC/register handling, static buffers, and CAN encoding for 16-bit voltage/temperature telemetry.
+        }
+
+        \resumeItem{
+          \textbf{Drove component and trace changes across 4 BMS board revisions}, reviewing schematics with the EE team and feeding back design issues found during firmware bring-up.
+        }
         
       \resumeItemListEnd
  
@@ -82,14 +101,22 @@
       \resumeProjectHeading
           {\textbf{MIPS SoC with Hardware Accelerator} $|$ \emph{Verilog, Xilinx Vivado, Basys 3 FPGA}}{2024}
           \resumeItemListStart
-            \resumeItem{Designed and deployed \textbf{32-bit MIPS SoC} on Artix-7 FPGA with custom single-cycle CPU, memory-mapped GPIO, and hardware factorial accelerator using Moore FSM with datapath/control separation.}
+            \resumeItem{
+              Designed and deployed \textbf{32-bit MIPS SoC} on Artix-7 FPGA with custom single-cycle CPU, memory-mapped GPIO, and hardware factorial accelerator using Moore FSM with datapath/control separation.
+            }
             
           \resumeItemListEnd
  
       \resumeProjectHeading
           {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$ \emph{Python, pymavlink, YOLOv8, CUDA, Jetson}}{2026}
           \resumeItemListStart
-            \resumeItem{Developed \textbf{MAVLink flight controller integration} on NVIDIA Jetson Orin Nano over soldered UART to Pixhawk in GUIDED mode, with a concurrent GPS telemetry daemon and YOLOv8n CUDA inference pipeline for geotagged detection; flight control validated on hardware, vision pipeline ground-tested.}
+            \resumeItem{
+              \textbf{Integrated a Jetson Orin Nano with a Pixhawk over 921600-baud UART}, commanding takeoff, altitude, position, and yaw via MAVLink in GUIDED mode; validated in flight.
+            }
+
+            \resumeItem{
+              Ran a \textbf{concurrent 4 Hz GPS telemetry daemon alongside 30 FPS CUDA YOLOv8n detection}, geotagging detections and gating uploads on GPS lock; vision pipeline ground-tested.
+            }
             
           \resumeItemListEnd 
  
@@ -103,7 +130,7 @@
      \textbf{Embedded \& Protocols}{: STM32 (ARM Cortex-M3), Device Drivers (SPI, isoSPI, I2C, CAN, BLE), MEMS IMUs, Real-Time Systems, DSP, Signal Processing} \\
      \textbf{Testing \& Validation}{: HIL Testing, JNI Harness, Regression Testing, Software Simulation, Performance Benchmarking} \\
      \textbf{EDA \& Simulation}{: Altium, LTspice, MATLAB, Simulink, Xilinx Vivado} \\
-     \textbf{Development Tools}{: Git, JTAG Debuggers, Oscilloscopes, CMake, Make, STM32CubeIDE} \\
+     \textbf{Development Tools}{: Git, JTAG Debuggers, Oscilloscopes, CMake, Make, STM32CubeIDE, Claude Code, OpenCode (agentic coding workflows, code review augmentation)} \\
      \textbf{ML/AI \& Data}{: TensorFlow, TFLite, PyTorch, ONNX, SciPy, InfluxDB, Grafana, Docker}
     }}
  \resumeSubHeadingListEnd

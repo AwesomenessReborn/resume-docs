@@ -4,7 +4,8 @@
 #
 # Usage (normally via `make`): build-report.pl VARIANT...
 # Environment: REPORT_MAKE (make command), STRICT=1 (layout warnings fail),
-#              V=1 (stream raw build output), NO_COLOR (disable color).
+#              V=1 (stream raw build output), NO_COLOR (disable color),
+#              REPORT_PDF_DIR / REPORT_WORK_DIR (output directories).
 use strict;
 use warnings;
 use Digest::MD5;
@@ -14,6 +15,8 @@ my $make       = $ENV{REPORT_MAKE} || 'make';
 my $strict     = ($ENV{STRICT} // '0') eq '1';
 my $verbose    = ($ENV{V} // '0') eq '1';
 my $max_errors = 10;
+my $pdf_dir    = $ENV{REPORT_PDF_DIR} // 'build/pdf';
+my $work_dir   = $ENV{REPORT_WORK_DIR} // 'build/work';
 
 # Flush per line so the report and the stderr banner stay in order when piped.
 $| = 1;
@@ -30,8 +33,8 @@ my ($any_failed, $any_layout) = (0, 0);
 
 for my $v (@variants) {
     my $name = "hari-resume-$v";
-    my $pdf  = "build/pdf/$name.pdf";
-    my $work = "build/work/$v";
+    my $pdf  = "$pdf_dir/$name.pdf";
+    my $work = "$work_dir/$v";
     my $log  = "$work/$name.log";
 
     my $started = time;

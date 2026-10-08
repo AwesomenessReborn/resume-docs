@@ -1,6 +1,6 @@
 {
   "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build/work",
+  "latex-workshop.latex.outDir": "%DIR%/../build/work",
   "latex-workshop.latex.recipe.default": "latexmk (repository)",
   "latex-workshop.latex.recipes": [
     {
@@ -23,7 +23,7 @@
         "%DOC%"
       ],
       "env": {
-        "TEXINPUTS": "..:"
+        "TEXINPUTS": "%WORKSPACE_FOLDER%:"
       }
     }
   ],

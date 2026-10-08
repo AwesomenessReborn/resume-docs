@@ -100,7 +100,31 @@ latexmk -pdf -outdir=build/work/ml -auxdir=build/work/ml tex/hari-resume-ml.tex
 
 A bare `latexmk -pdf tex/<file>.tex` run from the repository root with no directory options falls back to `build/work/` (set in `.latexmkrc`) so nothing is written to the repository root.
 
-The sources load `\input{shared/...}` relative to the working directory, so run latexmk from the repository root. The VS Code LaTeX Workshop recipe in `.vscode/settings.json` runs from `tex/` instead; it passes the root `.latexmkrc`, sets `TEXINPUTS=..:` so `shared/` resolves, and writes to `build/work/`.
+The sources load `\input{shared/...}` relative to the working directory, so run latexmk from the repository root. The VS Code LaTeX Workshop recipe in `.vscode/settings.json` runs from the source's `tex/` directory instead; it passes the root `.latexmkrc`, sets `TEXINPUTS` to the workspace root so `shared/` resolves, and writes to the adjacent `build/work/` directory. This also keeps Apple application artifacts inside `apply-apple/`.
+
+### Apple application resume
+
+The Apple Cloud AI Platform application has its own source and standalone Makefile:
+
+```text
+apply-apple/
+  Makefile
+  tex/
+    hari-resume-swe.tex
+  pdf/                      published PDF only (gitignored)
+    hari-resume-swe.pdf
+  build/                    generated output (gitignored)
+    work/swe/               LaTeX artifacts, working PDF, and build report output
+```
+
+```sh
+make -C apply-apple          # compile, report, and publish to apply-apple/pdf/
+make -C apply-apple check    # require one page and no overfull boxes
+make -C apply-apple V=1      # include raw compiler output
+make -C apply-apple clean   # remove only apply-apple/build/; keep the published PDF
+```
+
+The Apple build reuses the shared preamble, commands, latexmk configuration, and build reporter. It has the same incremental-build and safe-publishing behavior as the main resumes, but does not build or replace them. LaTeX Workshop builds working output only; use Make to publish the final PDF.
 
 ## Checking layout
 
