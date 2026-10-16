@@ -126,6 +126,31 @@ make -C apply-apple clean   # remove only apply-apple/build/; keep the published
 
 The Apple build reuses the shared preamble, commands, latexmk configuration, and build reporter. It has the same incremental-build and safe-publishing behavior as the main resumes, but does not build or replace them. LaTeX Workshop builds working output only; use Make to publish the final PDF.
 
+### Other tailored applications
+
+The BRELYON Field Applications & Solutions Engineer resume uses EE-CMPE as
+its base, with supported deployment evidence from the SWE and ML variants.
+Its source and [change log](apply-random/CHANGELOG.md) live separately from
+the original resumes:
+
+```text
+apply-random/
+  Makefile
+  CHANGELOG.md
+  tex/hari-resume-brelyon.tex
+  build/pdf/hari-resume-brelyon.pdf   published PDF (gitignored)
+  build/work/brelyon/               compilation artifacts (gitignored)
+```
+
+```sh
+make -C apply-random check   # build and require one page, no overfull boxes
+make -C apply-random brelyon # build only the BRELYON application
+make -C apply-random clean  # remove only apply-random/build/
+```
+
+This standalone build reuses the shared layout and build reporter without
+changing or replacing the original resumes.
+
 ## Checking layout
 
 Every resume should be exactly one page with no overfull boxes. These two are **layout warnings**: the report flags them and prints a `LAYOUT WARNING` banner.

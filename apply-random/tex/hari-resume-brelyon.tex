@@ -1,0 +1,110 @@
+\documentclass[letterpaper,11pt]{article}
+
+\input{shared/preamble}
+\usepackage{textgreek}
+\input{shared/commands}
+
+\begin{document}
+
+\begin{center}
+  \resumeName{Harinandan Kotamsetti}
+    \small Cupertino, CA $|$ +1 (669) 264-9458 $|$ \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/hareee234/}{\underline{linkedin.com/in/hareee234}} $|$
+    \href{https://github.com/AwesomenessReborn}{\underline{github.com/AwesomenessReborn}}
+\end{center}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{San Jose State University}}{San Jose, CA}
+      {Bachelor of Science in Computer Engineering}{Expected Dec 2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Coursework:} OS, Computer Architecture, C/C++, FPGA, Verilog, Linear Algebra, x86 \& MIPS Assembly}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{STMicroelectronics}}{Santa Clara, CA}
+      {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{
+          \textbf{Built the on-device Android inference path for a walking-speed model} (129 KB CNN-LSTM, 0.059 m/s MAE): ring-buffered C++ IMU preprocessing at 208 Hz (replacing the Python pipeline) and a JNI bridge to Qualcomm's NPU runtime, running in real time at $\sim$15 ms per 2.5 s window; \textbf{demoed at CES 2026}.
+        }
+        \resumeItem{
+          \textbf{Ported an 887K-parameter VR head-motion model to Qualcomm's Hexagon NPU} (PyTorch $\rightarrow$ ONNX $\rightarrow$ QAIRT on HTP v81), matching PyTorch output within 0.056\textdegree{} on-device after fixing converter and tensor-layout failures.
+        }
+        \resumeItem{
+          Deployed always-on fall detection and wrist-tilt recognition entirely on ST's ISPU/MLC with \textbf{zero host-MCU compute}, sustaining 104 Hz sensor fusion at 3.08 ms worst case in $\sim$20 KB code / 1.1 KB RAM.
+        }
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
+      {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
+      \resumeItemListStart
+        \resumeItem{
+          \textbf{Built a Python hardware-in-the-loop test suite} on a breakout board emulating an accumulator module, validating OV/UV thresholds and fault logic without a live 400 V pack.
+        }
+        \resumeItem{
+          \textbf{Drove component and trace changes across 4 BMS board revisions}, reviewing schematics with the EE team and feeding back design issues found during firmware bring-up.
+        }
+        \resumeItem{
+          \textbf{Cut STM32F105 BMS polling latency 14$\times$ (7.0 s $\rightarrow$ 0.5 s)} across a 768-cell, 400 V pack by removing blocking CAN/thermistor delays, replacing 10 ms transmit waits with 3-mailbox availability checks, and moving to static buffers.
+        }
+        \resumeItem{
+          \textbf{Implemented interrupt-driven BMS fault handling with TIM7/NVIC ISRs}, encoding fault/warning states into 8-bit status bytes for deterministic HV shutdown signaling across the 8-module accumulator.
+        }
+        \resumeItem{
+          \textbf{Migrated STM32 BMS firmware from LTC6811 to LTC6813} across a \textbf{768-cell pack}, updating ADC/register handling, static buffers, and CAN encoding for 16-bit voltage/temperature telemetry.
+        }
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Patents \& Invention Disclosures}
+  \resumeSubHeadingListStart
+    \resumePatentHeading
+      {Motion-to-Photon Latency Compensation for XR/AR/VR Glasses}
+      {STMicroelectronics, Co-inventor}
+      {Invention Disclosure, 2026}
+    \resumePatentHeading
+      {Glasses with Wellness and Health Monitoring}
+      {STMicroelectronics, Co-inventor}
+      {Filed May 2026}
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{MERIT UAV --- Autonomous Surveillance Drone} $|$ \emph{Python, pymavlink, YOLOv8, CUDA, Jetson}}{2026}
+      \resumeItemListStart
+        \resumeItem{
+          \textbf{Integrated and flight-tested a Jetson Orin Nano with a Pixhawk over 921600-baud UART}, commanding takeoff, altitude, position, and yaw via MAVLink in GUIDED mode.
+        }
+        \resumeItem{
+          Ran a \textbf{concurrent 4 Hz GPS telemetry daemon alongside 30 FPS CUDA YOLOv8n detection}, geotagging detections and gating uploads on GPS lock; vision pipeline ground-tested.
+        }
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{MIPS SoC with Hardware Accelerator} $|$ \emph{Verilog, Xilinx Vivado, Basys 3 FPGA}}{2024}
+      \resumeItemListStart
+        \resumeItem{
+          Designed and deployed \textbf{32-bit MIPS SoC} on Artix-7 FPGA with custom single-cycle CPU, memory-mapped GPIO, and hardware factorial accelerator using Moore FSM with datapath/control separation.
+        }
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Technical Skills}
+  \resumeSubHeadingListStart
+    \small{\item{
+      \textbf{Embedded \& Hardware}{: STM32 (ARM Cortex-M3), Device Drivers, SPI, isoSPI, I2C, CAN, BLE, MEMS IMUs, Real-Time Systems} \\
+      \textbf{Testing \& Debugging}{: HIL Testing, Regression Testing, Performance Benchmarking, JTAG Debuggers, Oscilloscopes, Software Simulation} \\
+      \textbf{Systems \& Deployment}{: C, C++, Python, JNI/NDK, Android, Linux, CMake, Make, Git, STM32CubeIDE} \\
+      \textbf{EDA \& Signal Processing}{: Verilog, Altium, LTspice, MATLAB, Simulink, Xilinx Vivado, DSP, Signal Processing} \\
+      \textbf{ML Deployment}{: PyTorch, ONNX, QNN/QAIRT, TFLite, TensorFlow}
+    }}
+  \resumeSubHeadingListEnd
+
+\end{document}
