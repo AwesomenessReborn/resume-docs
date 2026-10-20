@@ -151,6 +151,52 @@ make -C apply-random clean  # remove only apply-random/build/
 This standalone build reuses the shared layout and build reporter without
 changing or replacing the original resumes.
 
+### Abbot application resume
+
+The Abbot application uses the [ML resume](tex/hari-resume-ml.tex) as its
+base, adding supported Android/C++/JNI deployment and regression-testing
+evidence from SWE and in-sensor resource metrics from EE-CMPE.
+Its [change log](apply-abbot/CHANGELOG.md) records the tailoring decisions.
+The directory mirrors `apply-random/`:
+
+```text
+apply-abbot/
+  Makefile
+  CHANGELOG.md
+  tex/hari-resume-abbot.tex
+  build/pdf/hari-resume-abbot.pdf   published PDF (gitignored)
+  build/work/abbot/                compilation artifacts (gitignored)
+```
+
+```sh
+make -C apply-abbot check   # build and require one page, no overfull boxes
+make -C apply-abbot abbot   # build only the Abbot application
+make -C apply-abbot clean   # remove only apply-abbot/build/
+```
+
+For further tailoring, edit `apply-abbot/tex/hari-resume-abbot.tex` and
+rerun its standalone build. The base ML resume, shared layout, and other
+applications remain unchanged.
+
+### Applied Material SWE new-grad application
+
+The [application source](apply-applied-material-swe-new-grad/tex/hari-resume-applied.tex)
+is based on the EE-CMPE variant, adding the SWE variant's cross-target
+C/Python regression harness, Data Structures & Algorithms coursework, and
+listing C/C++ first in Languages.
+Its standalone Makefile reuses the shared layout and build reporter without
+changing the original resumes.
+
+```sh
+make -C apply-applied-material-swe-new-grad check   # build and require one page, no overfull boxes
+make -C apply-applied-material-swe-new-grad clean   # remove only this application's build/
+```
+
+The published PDF is
+`apply-applied-material-swe-new-grad/build/pdf/hari-resume-applied.pdf`;
+compilation artifacts stay in the application's `build/work/` directory.
+All build output is gitignored.
+
 ## Checking layout
 
 Every resume should be exactly one page with no overfull boxes. These two are **layout warnings**: the report flags them and prints a `LAYOUT WARNING` banner.
