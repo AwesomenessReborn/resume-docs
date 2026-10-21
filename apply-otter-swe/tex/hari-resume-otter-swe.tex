@@ -1,0 +1,153 @@
+\documentclass[letterpaper,11pt]{article}
+
+\input{shared/preamble}
+\usepackage{textgreek}
+\input{shared/commands}
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+    \begin{center}
+    \resumeName{Harinandan Kotamsetti}
+    \small Cupertino, CA $|$ +1 (669) 264-9458 $|$ \href{mailto:hareee234@gmail.com}{\underline{hareee234@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/hareee234/}{\underline{linkedin.com/in/hareee234}} $|$
+    \href{https://github.com/AwesomenessReborn}{\underline{github.com/AwesomenessReborn}}    
+\end{center}
+
+%==================== SWE RESUME (systems / backend-leaning) ====================
+% Drop-in BODY (sections only). Assumes your preamble with \resumeSubheading,
+% \resumeItem, \resumeProjectHeading, \resumeSubHeadingListStart, etc. + contact header.
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{San Jose State University}}{San Jose, CA}
+      {Bachelor of Science in Computer Engineering}{Expected Dec 2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Coursework:} Operating Systems, Computer Architecture, C/C++, Data Structures \& Algorithms, x86 \& MIPS}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {\textbf{STMicroelectronics}}{Santa Clara, CA}
+      {\textbf{Software \& Algorithm Intern}}{Mar 2025 -- Present}
+      \resumeItemListStart
+
+        \resumeItem{
+          \textbf{Built the on-device Android inference path for a walking-speed model}: ring-buffered C++ IMU preprocessing at 208 Hz (replacing the Python pipeline) and a JNI bridge to Qualcomm's NPU runtime, running in real time at $\sim$15 ms per 2.5 s window; demoed at CES 2026.
+        }
+
+        \resumeItem{
+          \textbf{Built an Android Pedestrian Dead-Reckoning app (Google Maps SDK, GCP)} layering GPS-assisted drift correction over ST's IMU-only PDR library to bound position error over distance.
+        }
+    
+        \resumeItem{
+          \textbf{Ported a 887K-parameter VR head-motion model to Qualcomm's Hexagon NPU} (PyTorch $\rightarrow$ ONNX $\rightarrow$ QAIRT), matching PyTorch output within 0.056\textdegree{} on-device after fixing converter \& tensor-layout failures.
+        }
+    
+        \resumeItem{
+          Developed \textbf{C/Python regression harness} validating exported-model outputs against Python references across TFLite, ONNX, and QNN targets, enforcing numerical correctness across model updates.
+        }
+        
+        \resumeItem{
+          Owned the training pipeline for \textbf{45+ GPU-hour runs}: improved throughput \textbf{2.5$\times$ with bf16 + \texttt{torch.compile}}, making \textbf{all 9 runs (222 checkpoints) traceable} via \textbf{git- and config-stamped checkpoints}.
+        }
+        
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {\textbf{Spartan Racing (Formula SAE)}}{San Jose, CA}
+      {\textbf{Embedded Systems \& Software Developer}}{Aug 2023 -- Feb 2025}
+      \resumeItemListStart
+        \resumeItem{
+          \textbf{Cut STM32F105 BMS polling latency 14\texttimes{} (7 s $\rightarrow$ 0.5 s)} across an 8-module, 768-cell 400 V pack by removing blocking CAN/thermistor delays and switching to static-lifetime buffers.
+        }
+        
+        \resumeItem{
+          \textbf{Built the team's first real-time BMS telemetry} (CAN $\rightarrow$ InfluxDB $\rightarrow$ Grafana) for a 768-cell, 400 V pack, enabling live diagnostics and team-wide debugging.
+        }
+        
+        \resumeItem{
+          Developed \textbf{Python HIL test suite} on a physical breakout board emulating an accumulator module, validating OV/UV thresholds and fault logic without a live battery pack.
+        }
+        
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {\textbf{Theta Tau Professional Engineering Fraternity ($\Omega$E Chapter)}}{San Jose, CA}
+      {\textbf{Backend Engineer \& Webmaster} $|$ \normalfont{sjsuthetatau.org $\cdot$ github.com/Theta-Tau-SJSU-Software}}{Jan 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{
+          \textbf{Replaced spreadsheet workflows for 70+ members with a full-stack platform} (Next.js/TypeScript, Express, Supabase) for events, voting, and member management, shipped through GitHub Actions $\rightarrow$ Vercel with automated database migrations.
+        }
+        
+        \resumeItem{
+          \textbf{Enforced role-based access with Postgres row-level security}, so permissions hold at the database layer even if the API layer is bypassed.
+        }
+        
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PATENTS & INVENTION DISCLOSURES-----------
+\section{Patents \& Invention Disclosures}
+  \resumeSubHeadingListStart
+    \resumePatentHeading
+      {Glasses with Wellness and Health Monitoring}
+      {STMicroelectronics, Co-inventor}
+      {Filed May 2026}
+    \resumePatentHeading
+      {Motion-to-Photon Latency Compensation for XR/AR/VR Glasses}
+      {STMicroelectronics, Co-inventor}
+      {Invention Disclosure, 2026}
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Nemotron-H Fine-Tuning --- Kaggle NLP Competition} $|$
+    \emph{Python, PyTorch, LoRA, llama.cpp}}{2026}
+    \resumeItemListStart
+      \resumeItem{
+        \textbf{Improved Nemotron-H 4B task accuracy by 19.6--22.5 percentage points} via LoRA fine-tuning on 8,000+ reasoning traces (20.2M trainable parameters); resolved FP32/BF16 Mamba instability with a custom training loop.
+      }
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Retain --- AI Lecture Generation Platform} $|$
+    \emph{React, Express.js, PostgreSQL, AWS S3, Pinecone}}{2025}
+    \resumeItemListStart
+      \resumeItem{
+        \textbf{Built an Express.js REST backend} (7 endpoints, bcrypt auth, PostgreSQL) with S3 PDF uploads and a \textbf{Flask RAG microservice} using OpenAI embeddings and Pinecone retrieval to ground AI-generated lectures.
+      }
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \resumeSubHeadingListStart
+    \small{
+      \item{
+        \textbf{Languages}{: Python, C++, C, Java, Kotlin, TypeScript/JavaScript, SQL, Bash/Shell} \\
+        \textbf{Backend \& Systems}{: REST APIs, Express.js, Node.js, Flask, Linux, Multithreading, JNI/NDK, Real-time Pipelines} \\
+        \textbf{Infrastructure}{: PostgreSQL, Supabase, InfluxDB, Pinecone, AWS S3, Docker, Grafana, GCP (BigQuery, Maps SDK)} \\
+        \textbf{Tools \& Testing}{: Git, GitHub Actions, Bazel, CI/CD, CMake, Gradle, PyTorch, TFLite/ONNX, Claude Code / OpenCode (agentic coding, code-review augmentation)}    
+      }
+    }
+ \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

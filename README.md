@@ -126,6 +126,55 @@ make -C apply-apple clean   # remove only apply-apple/build/; keep the published
 
 The Apple build reuses the shared preamble, commands, latexmk configuration, and build reporter. It has the same incremental-build and safe-publishing behavior as the main resumes, but does not build or replace them. LaTeX Workshop builds working output only; use Make to publish the final PDF.
 
+### Otter.ai SWE application resume
+
+The [Otter.ai Software Engineer application](https://job-boards.greenhouse.io/embed/job_app?for=otterai&token=7798264003)
+uses the [SWE resume](tex/hari-resume-swe.tex) as its base. It replaces
+the MERIT UAV project with the Nemotron-H Fine-Tuning project from the
+[ML resume](tex/hari-resume-ml.tex), condensing the fine-tuning and
+numerical-stability evidence into one bullet. Retain's backend and RAG
+evidence is also condensed into one bullet. It removes MATLAB/Simulink
+from the Claude Code / OpenCode parenthetical in Technical Skills; all
+other SWE content remains unchanged.
+
+```text
+apply-otter-swe/
+  Makefile
+  tex/hari-resume-otter-swe.tex
+  build/pdf/hari-resume-otter-swe.pdf   published PDF (gitignored)
+  build/work/otter-swe/                compilation artifacts (gitignored)
+```
+
+```sh
+make -C apply-otter-swe         # build and publish the Otter.ai resume
+make -C apply-otter-swe check   # require one page and no overfull boxes
+make -C apply-otter-swe clean   # remove only apply-otter-swe/build/
+```
+
+The standalone build reuses the shared layout and build reporter without
+changing or replacing the original resumes.
+
+The project bullets use the author's condensed wording. Fonts, margins,
+and spacing remain unchanged.
+
+### Micron application resume
+
+The [Micron application source](apply-micron/tex/hari-resume-micron.tex)
+uses the [EE / CmpE resume](tex/hari-resume-ee-cmpe.tex) as its base.
+It adds Linux and Bash/Shell to Technical Skills and highlights
+oscilloscope-based bench debugging in the Spartan Racing board-revision
+bullet. All other resume content and the shared layout remain unchanged.
+
+```sh
+make -C apply-micron check   # build and require one page, no overfull boxes
+make -C apply-micron micron  # build only the Micron application
+make -C apply-micron clean   # remove only apply-micron/build/
+```
+
+The published PDF is `apply-micron/build/pdf/hari-resume-micron.pdf`;
+compilation artifacts stay in `apply-micron/build/work/micron/`.
+All build output is gitignored.
+
 ### Other tailored applications
 
 The BRELYON Field Applications & Solutions Engineer resume uses EE-CMPE as
